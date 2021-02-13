@@ -1,4 +1,3 @@
-from time import sleep
 from node import Node
 from datatypes import Stack, Queue
 
@@ -13,14 +12,16 @@ def breadth_first(root):
         node = queue.pop()
         if isinstance(node, Node):
             print(node)
-            queue.push("separator")
-            queue.push(node.left)
-            queue.push(node.right)
+            if not node.leaf():
+                queue.push("separator")
+
+                # queue ignores pushes of None, these are potential None pushes
+                queue.push(node.left)
+                queue.push(node.right)
+
         if node == "separator":
             print(f"height {height}")
             height += 1
-
-        sleep(1)
 
 
 A = Node("A")

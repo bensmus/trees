@@ -28,6 +28,7 @@ class Queue(Stack):
     def push(self, value):
         if value == None:
             return
+        # appendleft instead of append
         self.data.appendleft(value)
 
     def to_console(self):

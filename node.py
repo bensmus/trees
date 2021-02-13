@@ -6,3 +6,6 @@ class Node:
 
     def __str__(self):
         return self.value.__str__()
+
+    def leaf(self):
+        return (self.left == None and self.right == None)

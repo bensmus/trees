@@ -31,16 +31,14 @@ def pre_order_iterative(root):
     stack = Stack()
     stack.push(root)
 
-    # Stack does not accept pushes of None,
-    # it ignores them.
-
     while not stack.empty():
         # stack.to_console()
 
         node = stack.pop()
         print(node)
-        stack.push(node.right)
-        stack.push(node.left)
+        if not node.leaf():
+            stack.push(node.right)
+            stack.push(node.left)
 
 
 print("===iterative pre-order===")
@@ -56,8 +54,9 @@ def breadth_first(root):
         print(node)
 
         # when you push to a queue, they come to the back, not to the front!
-        queue.push(node.right)
-        queue.push(node.left)
+        if not node.leaf():
+            queue.push(node.right)
+            queue.push(node.left)
 
 
 print("===iterative breadth-first===")
